@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="col-md-offset-10">
+
+    <%= link_to "new".html_safe, new_fiscal_year_url, :class => "btn btn-primary" %>
+
+  </div>
+  <br>
+
+  <div class="form">
+    <table class="table table-bordered table-hover">
+      <tr>
+        <td>Name</td>
+        <td>start_date</td>
+        <td>end_date</td>
+        <td>operation</td>
+      </tr>
+
+      <% @fiscal_year.each do |fiscal_year| %>
+          <tr>
+            <td><%= fiscal_year.name %> </td>
+            <td><%= fiscal_year.start_date %></td>
+            <td><%= fiscal_year.end_date %> </td>
+
+            <td><%= link_to "", edit_fiscal_year_path(fiscal_year),class: "fa fa-pencil-square-o", :title => "Edit" %>
+              <%= link_to "", fiscal_year_path(fiscal_year),class: "fa fa-trash", :title => "Delete",
+                          method: :delete, data: {confirm: "Are you sure"} %></td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

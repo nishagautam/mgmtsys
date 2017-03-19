@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="col-md-offset-10">
+
+    <%= link_to "new".html_safe, new_sale_url, :class => "btn btn-primary" %>
+
+  </div>
+  <br>
+
+  <div class="form">
+    <table class="table table-bordered table-hover">
+      <tr>
+        <td>Item Id</td>
+        <td>Unit_sell_price</td>
+        <td>Quantity</td>
+        <td>Cash credit</td>
+        <td>Customer Id</td>
+        <td>Operations</td>
+      </tr>
+
+      <% @sales.each do |sale| %>
+          <tr>
+            <td><%= sale.item_id %> </td>
+            <td><%= sale.unit_sell_price %></td>
+            <td><%= sale.quantity %></td>
+            <td><%= sale.cash_credit %></td>
+            <td><%= sale.customer_id %></td>
+            <td><%= link_to "", edit_sale_path(sale), class: "fa fa-pencil-square-o", :title => "Edit" %>
+              <%= link_to "", sale_path(sale), class: "fa fa-trash", :title => "Delete",
+                          method: :delete, data: {confirm: "Are you sure"} %></td>
+          </tr>
+      <% end %>
+    </table>
+    <%= will_paginate @sales, renderer:BootstrapPagination::Rails%>
+  </div>
+</div>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "Mgmtsys" %></title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag "application", :media => "all" %>
+
+  <!-- For third-generation iPad with high-resolution Retina display: -->
+  <!-- Size should be 144 x 144 pixels -->
+  <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
+
+  <!-- For iPhone with high-resolution Retina display: -->
+  <!-- Size should be 114 x 114 pixels -->
+  <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
+
+  <!-- For first- and second-generation iPad: -->
+  <!-- Size should be 72 x 72 pixels -->
+  <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
+
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <!-- Size should be 57 x 57 pixels -->
+  <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
+
+  <!-- For all other devices -->
+  <!-- Size should be 32 x 32 pixels -->
+  <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+
+  <%= javascript_include_tag "application" %>
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
+  <![endif]-->
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+<% if user_signed_in? %>
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Mgmtsys</a>
+        <div class="navbar-collapse collapse navbar-responsive-collapse, background-color: darkenblue;">
+          <ul class="nav navbar-nav">
+            <li class="dropdown" role="presentation">
+              <a class="dropdown-toggle a1" data-toggle="dropdown" role="button" href="#" aria-expanded="false">Settings
+                <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Logs", "/logs" %></li>
+                <li><%= link_to "Logout", "/destroy_user_session" %></li>
+
+              </ul>
+            </li>
+            <li><%= link_to "Home", "/" %></li>
+            <li><%= link_to "login", "/users/sign_in" %></li>
+            <li><%= link_to "signup", "/users/sign_up" %></li>
+            <li><%= link_to "CompanyProfiles", "/company_profiles" %></li>
+            <li><%= link_to "Units", "/units" %></li>
+            <li class="dropdown" role="presentation">
+              <a class="dropdown-toggle a1" data-toggle="dropdown" role="button" href="#" aria-expanded="false">Items
+                <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Items", "/items" %></li>
+                <li><%= link_to "Item group", "/item_groups" %></li>
+              </ul>
+            </li>
+            <li><%= link_to "FiscalYear", "/fiscal_years" %></li>
+            <li><%= link_to "stocks", "/stocks" %></li>
+            <li><%= link_to "Suppliers", "/suppliers" %></li>
+            <li><%= link_to "Customers", "/customers" %></li>
+            <li><%= link_to "Sales", "/sales" %></li>
+          </ul>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <ol class="breadcrumb">
+              <%= render_breadcrumbs :tag => :li, :separator => "" %>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<% else %>
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Mgmtsys</a>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+            <li><%= link_to "login", "/users/sign_in" %></li>
+            <li><%= link_to "signup", "/users/sign_up" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-1">
+      <%= bootstrap_flash %>
+      <%= yield %>
+    </div>
+
+  </div><!--/row-->
+
+  <footer>
+    <p>&copy; Copyright Nisha gautam</p>
+  </footer>
+
+</div> <!-- /container -->
+
+</body>
+</html>

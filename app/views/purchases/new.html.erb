@@ -1,0 +1,78 @@
+<div class="container">
+
+        <%= form_for (@purchase), url: purchases_path, :html => {:class => "form-horizontal"} do |f| %>
+            <div class="col-md-6 col-md-offset-3">
+              <% if @purchase.errors.any? %>
+                  <div class="alert-danger">
+                    <h1>
+                      <%= pluralize(@purchase.errors.count, "error") %>
+                      occured
+                    </h1>
+                    <ul>
+                      <% @purchase.errors.full_messages.each do |e| %>
+                          <li> <%= e %> </li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+
+              <div class="form-group">
+                <%= f.label :supplier_id, :class => "col-md-3" %>
+                <div class="col-md-9">
+                  <%= f.collection_select :supplier_id,  Supplier.all, :id, :name, {prompt: "Select unit"},{class: "form-control"}  %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :bill_no, :class => "col-md-3" %>
+                <div class="col-md-9">
+                  <%= f.text_field :bill_no, :class => "form-control", :placeholder => "Bill Number" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :fiscal_year_id, :class => "col-md-3" %>
+                <div class="col-md-9">
+                  <%= f.collection_select :fiscal_year_id, FiscalYear.all, :id,:name, {prompt: "select itemgroup"},{class: "form-control"} %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :purchase_date, :class => "col-md-3" %>
+                <div class="col-md-9">
+                  <%= f.text_field :purchases_date, :class => "form-control", :placeholder => "purchase" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :total, :class => "col-md-3" %>
+                <div class="col-md-9">
+                  <%= f.text_field :total, :class => "form-control", :placeholder => "total" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :discount, :class => "col-md-3" %>
+                <div class="col-md-9">
+                  <%= f.text_field :discount, :class => "form-control", :placeholder => "total" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :tax, :class => "col-md-3" %>
+                <div class="col-md-9">
+                  <%= f.text_field :tax, :class => "form-control", :placeholder => "total" %>
+                </div>
+              </div>
+
+      <% end %>
+        </div>
+      </div>
+<script>
+  $('#date').datepicker({
+    format: "yyyy/mm/dd",
+  }).on('changeDate', function (e) {
+    $(this).datepicker('hide');
+  });
+</script>
+
+

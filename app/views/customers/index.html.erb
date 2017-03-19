@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="col-md-offset-10">
+
+    <%= link_to "new".html_safe, new_customer_url, :class => "btn btn-primary" %>
+
+  </div>
+  <br>
+
+  <div class="form">
+    <table class="table table-bordered table-hover">
+      <tr>
+        <td>Name</td>
+        <td>Phn_no</td>
+        <td>Address</td>
+        <td>Email</td>
+        <td>Operations</td>
+      </tr>
+
+      <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.name %> </td>
+            <td><%= customer.phn_no %></td>
+            <td><%= customer.address%></td>
+            <td><%= customer.email %></td>
+            <td><%= link_to "", edit_customer_path(customer), class: "fa fa-pencil-square-o", :title => "Edit" %>
+              <%= link_to "", customer_path(customer), class: "fa fa-trash", :title => "Delete",
+                          method: :delete, data: {confirm: "Are you sure"} %></td>
+          </tr>
+      <% end %>
+    </table>
+    <%= will_paginate @customers, renderer:BootstrapPagination::Rails%>
+
+  </div>
+</div>

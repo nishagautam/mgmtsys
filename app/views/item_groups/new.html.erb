@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="well">
+
+  <%= form_for :item_group, url: @item_groups_path do |f| %>
+      <% if @item_group.errors.any? %>
+          <div class="alert-danger">
+            <h1>
+              <%= pluralize(@item_group.errors.count, "error") %>
+              occured
+            </h1>
+            <ul>
+              <% @item_group.errors.full_messages.each do |e| %>
+                  <li> <%= e %> </li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+      <div class="form-horizontal">-
+        <div class="form-group">
+          <div class="row">
+            <%= f.label :name, :class => "col-md-2" %>
+            <div class="col-md-4">
+              <%= f.text_field :name, :class => "form-control", :placeholder => "name" %> </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <%= f.label :parent_id, :class => "col-md-2" %>
+            <div class="col-md-4">
+              <%= f.text_field :parent_id, :class => "form-control",  :placeholder => "parentid" %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <%= f.label :description, :class => "col-md-2" %>
+            <div class="col-md-4">
+              <%= f.text_area :description, :class => "form-control",  :placeholder => "about" %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-offset-2 col-md-4">
+              <%= f.submit(type: 'submit', class: "btn btn-primary", value: "save") %>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
+      </div>
+    </div>
+  </div>

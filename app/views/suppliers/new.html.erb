@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="well">
+  <%= form_for :supplier, url: suppliers_path do |f| %>
+      <% if @supplier.errors.any? %>
+          <div class="alert-danger">
+            <h1>
+              <%= pluralize(@supplier.errors.count, "error") %>
+              occured
+            </h1>
+            <ul>
+              <% @supplier.errors.full_messages.each do |e| %>
+                  <li> <%= e %> </li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+      <div class="form-horizontal">-
+        <div class="form-group">
+          <div class="row">
+            <%= f.label :name, :class => "col-md-2" %>
+            <div class="col-md-4">
+              <%= f.text_field :name, :class => "form-control", :placeholder => "name" %> </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <%= f.label :phn_no, :class => "col-md-2" %>
+            <div class="col-md-4">
+              <%= f.text_field :phn_no, :class => "form-control", :placeholder => "phone number" %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <%= f.label :address, :class => "col-md-2" %>
+            <div class="col-md-4">
+              <%= f.text_field :address, :class => "form-control", :placeholder => "address" %> </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <%= f.label :email, :class => "col-md-2" %>
+            <div class="col-md-4">
+              <%= f.text_field :email, :class => "form-control", :placeholder => "email address" %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-offset-2 col-md-4">
+              <%= f.submit(type: 'submit', class: "btn btn-primary", value: "save") %>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
+      </div>
+    </div>
+  </div>

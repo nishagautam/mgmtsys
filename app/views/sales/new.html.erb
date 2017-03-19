@@ -1,0 +1,75 @@
+<div class="container">
+  <%= form_for (@sale),  :html => {:class => "form-horizontal"} do |f| %>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="well">
+      <% if @sale.errors.any? %>
+          <div class="alert-danger">
+            <h1>
+              <%= pluralize(@sale.errors.count, "error") %>
+              occured
+            </h1>
+            <ul>
+              <% @sale.errors.full_messages.each do |e| %>
+                  <li> <%= e %> </li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+      <div class="form-horizontal">-
+        <div class="form-group">
+          <div class="row">
+            <%= f.label :item_id, :class => "col-md-2" %>
+            <div class="col-md-4">
+              <%= f.collection_select :item_id, Item.all, :id,:name, {prompt: "select item"},{class: "form-control"} %>
+            </div>
+        </div>
+          </div>
+        <div class="form-group">
+          <div class="row">
+            <%= f.label :unit_sell_price, :class => "col-md-2" %>
+            <div class="col-md-4">
+              <%= f.text_field :unit_sell_price, :class => "form-control", :placeholder => "sell price" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <%= f.label :quantity, :class => "col-md-2" %>
+            <div class="col-md-4">
+              <%= f.text_field :quantity, :class => "form-control", :placeholder => "quantity" %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <%= f.label :cash_credit, :class => "col-md-2" %>
+            <div class="col-md-4">
+              <%= f.text_field :cash_credit, :class => "form-control", :placeholder => "Cash/ Credit" %> </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <%= f.label :customer_id, :class => "col-md-2" %>
+            <div class="col-md-4">
+              <%= f.text_field :customer_id, :class => "form-control", :placeholder => "Customer Id" %> </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-offset-2 col-md-4">
+              <%= f.submit(type: 'submit', class: "btn btn-primary", value: "save") %>
+            </div>
+          </div>
+        </div>
+
+  <% end %>
+</div>
+  </div>
+  </div>
+  </div>
+      </div>
+    </div>

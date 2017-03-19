@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="form">
+    <table class="table table-bordered table-hover">
+      <tr>
+        <td>Email Id</td>
+        <td>Description</td>
+        <td>Time</td>
+      </tr>
+      <% @logs.each do |log| %>
+          <tr>
+            <td><%= log.user.email %> </td>
+            <td><%= log.description %></td>
+          <td><%= log.created_at %></td>
+      <% end %>
+    </table>
+    <%= will_paginate @logs, renderer:BootstrapPagination::Rails%>
+
+  </div>
+</div>
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="PostgreSQL - nisha@localhost" uuid="f3426f78-547e-4414-8fc6-1f64c510dc22">
+      <secret-storage>master_key</secret-storage>
+      <user-name>nisha</user-name>
+      <schema-pattern>nisha.pg_catalog nisha.public</schema-pattern>
+      <default-schemas>nisha.public</default-schemas>
+    </data-source>
+  </component>
+</project>

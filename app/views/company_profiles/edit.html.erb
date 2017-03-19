@@ -1,0 +1,82 @@
+<%= form_for :company_profile, url: company_profile_path(@company_profile), method: :put do |f| %>-
+
+<div class="well">
+    <div class="form-group">
+      <div class="row">
+        <%= f.label :name, :class => "col-md-2" %>
+        <div class="col-md-4">
+          <%= f.text_field :name, :class => "form-control", :placeholder => "name" %> </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <%= f.label :address, :class => "col-md-2" %>
+        <div class="col-md-4">
+          <%= f.text_field :address, :class => "form-control", :placeholder => "address" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <%= f.label :vdc_mun, :class => "col-md-2" %>
+        <div class="col-md-4">
+          <%= f.text_field :vdc_mun, :class => "form-control", :placeholder => "vdc/mun" %> </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <%= f.label :ward_no, :class => "col-md-2" %>
+        <div class="col-md-4">
+          <%= f.text_field :ward_no, :class => "form-control", :placeholder => "ward_no" %> </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <%= f.label :phone, :class => "col-md-2" %>
+        <div class="col-md-4">
+          <%= f.text_field :phone, :class => "form-control", :placeholder => "phone number" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <%= f.label :vat_pan_num, :class => "col-md-2" %>
+        <div class="col-md-4">
+          <%= f.text_field :vat_pan_num, :class => "form-control", :placeholder => "vat_pan_num" %>
+        </div>
+      </div>
+    </div><div class="form-group">
+  <div class="row">
+    <%= f.label :logo_url, :class => "col-md-2" %>
+    <div class="col-md-4">
+      <%= f.file_field :logo_url, :class => "form-control", :placeholder => "logo_url" %>
+    </div>
+  </div>
+</div><div class="form-group">
+  <div class="row">
+    <%= f.label :district, :class => "col-md-2" %>
+    <div class="col-md-4">
+      <%= f.text_field :district, :class => "form-control", :placeholder => "district" %>
+    </div>
+  </div>
+</div><div class="form-group">
+  <div class="row">
+    <%= f.label :zone, :class => "col-md-2" %>
+    <div class="col-md-4">
+      <%= f.text_field :zone, :class => "form-control", :placeholder => "zone area" %>
+    </div>
+  </div>
+</div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-4">
+          <%= f.submit(type: 'submit', class: "btn btn-primary",value: "save") %>
+        </div>
+      </div>
+    </div>
+    </div>
+<% end %>
+</div>

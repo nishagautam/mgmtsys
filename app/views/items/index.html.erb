@@ -1,0 +1,36 @@
+<div class="container">
+
+  <div class="col-md-offset-11">
+
+    <%= link_to "new".html_safe, new_item_url, :class => "btn btn-primary" %>
+
+  </div>
+  <br>
+  <div class="form">
+    <table class="table table-bordered table-hover">
+      <tr>
+        <td>Name</td>
+        <td>unit_id</td>
+        <td>item_code</td>
+        <td>item_group_id</td>
+        <td>description</td>
+        <td>Operations</td>
+      </tr>
+
+      <% @item.each do |item| %>
+          <tr>
+            <td><%= item.name %> </td>
+            <td><%= item.unit_id %></td>
+            <td><%= item.item_code %></td>
+            <td><%= item.item_group_id %></td>
+            <td><%= item.description %></td>
+            <td><%= link_to "", edit_item_path(item), class: "fa fa-pencil-square-o", :title => "Edit" %>
+              <%= link_to "", item_path(item), class: "fa fa-trash", :title => "Delete",
+                          method: :delete, data: {confirm: "Are you sure"} %></td>
+          </tr>
+      <% end %>
+    </table>
+    <%= will_paginate @item, renderer:BootstrapPagination::Rails%>
+
+  </div>
+</div>
